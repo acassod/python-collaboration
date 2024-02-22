@@ -3,27 +3,54 @@ def add_task(task, dict_tasks):
     new_dict[task] = "not completed"
     return new_dict
 
+def mark_task(task, dict_tasks):
+    in_list = False
+    
+    for key in dict_tasks:
+        if key == task:
+            in_list = True
+            dict_tasks[key] = "completed"
+            
+    return in_list
+
+def delete_task(task, dict_tasks):
+    in_list = False
+    
+    list_keys = []
+    
+    for key in dict_tasks:
+        if key == task:
+            in_list = True
+            list_keys.append(key)
+    
+    for l in list_keys:
+        del dict_tasks[l]
+            
+    return in_list
+            
+
 def main():
     dict_tasks = dict()
     action = ""
     
     while action.upper() != "DONE":
         action = input("\n\nEnter add, view, mark, delete, or done.")
+        
         if action.upper() == "ADD":
             task = input("Enter the task you want to add.")
             add_task(task, dict_tasks)
             print("\nThe list is now:")
             print(dict_tasks)
-        elif action.upper() == "view":
+        elif action.upper() == "VIEW":
             print(dict_tasks)
-        elif action.upper() == "mark":
+        elif action.upper() == "MARK":
             task = input("Enter the task you want to mark.")
             marked = mark_task(task, dict_tasks)
             if marked == False:
                 print("\nThe task could not be marked.")
             print("\nThe list is now:")
             print(dict_tasks)
-        elif action.upper() == "delete":
+        elif action.upper() == "DELETE":
             task = input("Enter the task you want to delete.")
             deleted = delete_task(task, dict_tasks)
             if deleted == False:
