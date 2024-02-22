@@ -13,6 +13,12 @@ def mark_task(task, dict_tasks):
             
     return in_list
 
+def mark_all(dict_tasks):    
+    for key in dict_tasks:
+        dict_tasks[key] = "completed"
+            
+    return dict_tasks
+
 def delete_task(task, dict_tasks):
     in_list = False
     
@@ -34,8 +40,7 @@ def main():
     action = ""
     
     while action.upper() != "DONE":
-        action = input("\n\nEnter add, view, mark, delete, or done.")
-        
+        action = input("\n\nEnter add, view, markall, delete, or done.")
         if action.upper() == "ADD":
             task = input("Enter the task you want to add.")
             add_task(task, dict_tasks)
@@ -55,6 +60,10 @@ def main():
             deleted = delete_task(task, dict_tasks)
             if deleted == False:
                 print("\nThe task could not be deleted.")
+            print("\nThe list is now:")
+            print(dict_tasks)
+        elif action.upper() == "MARKALL":
+            mark_all(dict_tasks)
             print("\nThe list is now:")
             print(dict_tasks)
             
