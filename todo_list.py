@@ -1,11 +1,14 @@
+def add_task(task, dict_tasks):
+    new_dict = dict_tasks
+    new_dict[task] = "not completed"
+    return new_dict
 
-
-main():
+def main():
     dict_tasks = dict()
     action = ""
     
     while action.upper() != "DONE":
-        action = input("\n\nEnter add, view, mark, or delete.")
+        action = input("\n\nEnter add, view, mark, delete, or done.")
         if action.upper() == "ADD":
             task = input("Enter the task you want to add.")
             add_task(task, dict_tasks)
@@ -27,3 +30,5 @@ main():
                 print("\nThe task could not be deleted.")
             print("\nThe list is now:")
             print(dict_tasks)
+            
+main()
